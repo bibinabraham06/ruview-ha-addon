@@ -1,8 +1,9 @@
+ARG BUILD_FROM
+
 # Stage 1: extract sensing-server binary from official RuView image
 FROM ruvnet/wifi-densepose:latest AS ruview-source
 
 # Stage 2: HA add-on image (debian-based for glibc compatibility with sensing-server)
-ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Install Python 3 and pip (debian base doesn't include them)
