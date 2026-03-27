@@ -2,9 +2,12 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-# Install RuView binary
+ARG TARGETARCH
+
+# Install RuView binary (TARGETARCH is injected by Docker buildx)
 RUN apk add --no-cache curl && \
-    curl -fsSL https://github.com/ruvnet/RuView/releases/latest/download/ruview-linux-$(uname -m).tar.gz \
+    ARCH=$([ "$TARGETARCH" = "arm64" ] && echo "aarch64" || echo "x86_64") && \
+    curl -fsSL https://github.com/ruvnet/RuView/releases/latest/download/ruview-linux-${ARCH}.tar.gz \
     | tar -xz -C /usr/local/bin/ && \
     chmod +x /usr/local/bin/ruview
 
@@ -17,4 +20,5 @@ COPY bridge/ /app/bridge/
 COPY ui/ /app/ui/
 
 WORKDIR /app
+ENV BRIDGE_PORT=8099
 CMD ["python3", "-m", "bridge.main"]

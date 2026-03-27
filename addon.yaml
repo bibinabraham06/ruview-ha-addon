@@ -21,7 +21,3 @@ schema:
   log_level: list(debug|info|warning|error)
   scan_interval: int(1,10)
   intrusion_mode: bool
-ports:
-  7123/tcp: null
-ports_description:
-  7123/tcp: RuView bridge API (internal)
