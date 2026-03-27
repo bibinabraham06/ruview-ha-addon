@@ -1,0 +1,18 @@
+/* ruview-ha-addon/ui/style.css */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: sans-serif; background: #111827; color: #f3f4f6; min-height: 100vh; }
+header { padding: 1rem 1.5rem; border-bottom: 1px solid #374151; display: flex; align-items: center; gap: 2rem; }
+h1 { font-size: 1.2rem; color: #60a5fa; }
+nav { display: flex; gap: 0.5rem; }
+.tab-btn { background: #1f2937; border: none; color: #9ca3af; padding: 0.4rem 1rem; border-radius: 6px; cursor: pointer; }
+.tab-btn.active { background: #3b82f6; color: white; }
+main { padding: 1.5rem; max-width: 800px; }
+.tab { display: none; }
+.tab.active { display: block; }
+h2 { margin-bottom: 1rem; font-size: 1rem; color: #d1d5db; }
+.node-card, .zone-card { background: #1f2937; border-radius: 8px; padding: 1rem; margin-bottom: 0.75rem; }
+.status-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #374151; }
+.badge-online { color: #34d399; }
+.badge-offline { color: #f87171; }
+.hint { color: #6b7280; font-size: 0.85rem; margin-top: 1rem; }
+.hint a { color: #60a5fa; }

@@ -1,0 +1,43 @@
+<!-- ruview-ha-addon/ui/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RuView HA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>RuView HA</h1>
+    <nav>
+      <button class="tab-btn active" data-tab="nodes">Nodes</button>
+      <button class="tab-btn" data-tab="zones">Zones</button>
+      <button class="tab-btn" data-tab="status">Status</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Tab 1: Node Pairing -->
+    <section id="tab-nodes" class="tab active">
+      <h2>Node Pairing</h2>
+      <div id="node-list">Loading nodes...</div>
+      <p class="hint">Need to add a node? See the <a href="https://github.com/ruview-ha/ruview-ha-addon/blob/main/DOCS.md" target="_blank">ESP32 setup guide</a>.</p>
+    </section>
+
+    <!-- Tab 2: Zone Config -->
+    <section id="tab-zones" class="tab">
+      <h2>Zone Configuration</h2>
+      <div id="zone-list">Loading zones...</div>
+    </section>
+
+    <!-- Tab 3: System Status -->
+    <section id="tab-status" class="tab">
+      <h2>System Status</h2>
+      <div id="status-panel">Loading status...</div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
