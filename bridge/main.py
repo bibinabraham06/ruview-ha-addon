@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 
 RUVIEW_URL = os.environ.get("RUVIEW_URL", "http://localhost:3000")
 BRIDGE_PORT = int(os.environ.get("BRIDGE_PORT", "8099"))
-SCAN_INTERVAL = int(os.environ.get("SCAN_INTERVAL", "1"))
+SCAN_INTERVAL = max(1, int(os.environ.get("SCAN_INTERVAL", "1")))
 
 async def poll_ruview(client: RuViewClient, registry: ZoneRegistry):
     while True:

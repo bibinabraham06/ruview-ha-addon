@@ -1,7 +1,11 @@
 # ruview-ha-addon/bridge/api.py
 import json
+import logging
 from aiohttp import web
+import aiohttp
 from bridge.zone_registry import ZoneRegistry
+
+log = logging.getLogger(__name__)
 
 def create_app(registry: ZoneRegistry) -> web.Application:
     app = web.Application()
@@ -29,6 +33,9 @@ async def handle_websocket(request: web.Request) -> web.WebSocketResponse:
     await ws.send_str(json.dumps(registry.snapshot().to_dict()))
 
     async for msg in ws:
-        pass  # Client messages ignored; server is push-only
+        if msg.type == aiohttp.WSMsgType.ERROR:
+            log.warning("WebSocket error: %s", ws.exception())
+            break
+        # Other message types (text, binary) are ignored; server is push-only
 
     return ws
