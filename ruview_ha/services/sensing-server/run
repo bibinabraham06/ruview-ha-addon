@@ -1,7 +1,0 @@
-#!/usr/bin/with-contenv bashio
-# s6 service: RuView sensing-server
-exec /usr/local/bin/sensing-server \
-    --source simulation \
-    --tick-ms 100 \
-    --http-port 3000 \
-    --ws-port 3001
