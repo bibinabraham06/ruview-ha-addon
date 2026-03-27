@@ -23,11 +23,11 @@ RUN pip3 install --no-cache-dir --break-system-packages -r /tmp/requirements.txt
 COPY bridge/ /app/bridge/
 COPY ui/ /app/ui/
 
-# Copy startup script
-COPY run.sh /run.sh
-RUN chmod +x /run.sh
+# Register s6 services (HA add-on pattern — do NOT override CMD)
+COPY services/sensing-server/run /etc/services.d/sensing-server/run
+COPY services/bridge/run /etc/services.d/bridge/run
+RUN chmod +x /etc/services.d/sensing-server/run /etc/services.d/bridge/run
 
 WORKDIR /app
 ENV BRIDGE_PORT=8099
-
-CMD ["/run.sh"]
+ENV RUVIEW_URL=http://localhost:3000

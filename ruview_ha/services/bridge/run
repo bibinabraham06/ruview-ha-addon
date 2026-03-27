@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bashio
+# s6 service: Python bridge server
+# Wait for sensing-server to be ready
+sleep 3
+
+export LOG_LEVEL=$(bashio::config 'log_level' 'info' | tr '[:lower:]' '[:upper:]')
+export SCAN_INTERVAL=$(bashio::config 'scan_interval' '1')
+export INTRUSION_MODE=$(bashio::config 'intrusion_mode' 'false')
+
+exec python3 -m bridge.main
